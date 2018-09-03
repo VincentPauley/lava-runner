@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://ColumnGroup.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Column.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/LavaLayer.gd" type="Script" id=1]
+[ext_resource path="res://scenes/LavaSquare.tscn" type="PackedScene" id=2]
 
-[node name="ColumnGroup" type="Area2D"]
+[node name="LavaLayer" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -13,6 +13,6 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-column = ExtResource( 2 )
+lava_square = ExtResource( 2 )
 
 

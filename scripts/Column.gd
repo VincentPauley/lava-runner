@@ -15,6 +15,7 @@ var sink_speed
 const MAX_SINK_SPEED = 40
 const MIN_SINK_SPEED = 20
 
+var sink_height # < NOTE: is populated from content in parent node
 
 # this will store all bricks that make up the column
 var column_bricks = []
@@ -90,6 +91,8 @@ func _reposition_bottom_bricks(): # TODO: rename to include instantiation?
 #
 func _initialize_column():
 	
+	# !!! I THINK NEXT STEP IS THE CHARACTER :) !!!
+	
 	# need to add the first brick just to know the height
 	column_bricks.push_back( brick.instance() ) 
 	
@@ -115,6 +118,7 @@ func _initialize_column():
 	_reposition_bottom_bricks()
 
 func _ready():
+	
 
 	_set_sink_speed()
 
@@ -124,19 +128,18 @@ func _ready():
 	_initialize_column()
 
 func _process(delta):
-
+	
 	var velocity = Vector2(0,0)
 	
 	velocity.y += sink_speed;
+		
+	position += velocity * delta
 	
-	if( position.y > 600 ):
-	
+	if sink_height && position.y > sink_height:
+		
+		# column is submerged in lava, let parent know and remove this instance
 		emit_signal("has_fully_sunk")
 		queue_free() # no need to keep past it's sinking
-
-	position += velocity * delta	
-	
-	# need to loop through and put bricks in a row within the column
-	# to create a stack based on other position.  Then... movement should
-	# be controlled in the pillar, Not the brick itself, bricks should
-	# break apart has you step on them.
+	else:
+		# dynamic height has not been collected yet, attmpt to set
+		sink_height = get_parent().sink_height
