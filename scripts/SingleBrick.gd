@@ -1,4 +1,4 @@
-extends Area2D
+extends StaticBody2D
 
 var width
 var height
@@ -6,8 +6,6 @@ var height
 onready var sprite = $Sprite
 
 func _ready():
-	
-	print( friction )
 
 	# initialize width/height props for column's use
 	width = sprite.texture.get_width() * scale.x

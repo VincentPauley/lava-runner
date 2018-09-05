@@ -118,7 +118,6 @@ func _initialize_column():
 	_reposition_bottom_bricks()
 
 func _ready():
-	
 
 	_set_sink_speed()
 
@@ -127,7 +126,8 @@ func _ready():
 	
 	_initialize_column()
 
-func _process(delta):
+# this is called every frame right now but should instead relate to physiscs
+func _physics_process(delta):
 	
 	var velocity = Vector2(0,0)
 	
