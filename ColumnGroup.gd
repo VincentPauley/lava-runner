@@ -62,5 +62,5 @@ func _test():
 	
 	if sunken_columns == columns.size():
 		
-		# just reload scene for now.
-		get_tree().reload_current_scene()
+		print( "- All Columns have Sunk" )
+

@@ -42,9 +42,9 @@ func _ready():
 	square_height = lava_squares[0].height
 	square_width = lava_squares[0].width
 	
-	# set the column group's sink-height
+	# provide top position of lava to nodes that need it
 	get_parent().get_node( "ColumnGroup" ).sink_height = get_viewport_rect().size.y - square_height
-	
+	get_parent().get_node( "KinematicBody2D" ).lava_height = get_viewport_rect().size.y - square_height
 	
 	position.y = get_viewport_rect().size.y  - square_height / 2 # take centered origin of block into account when positioning
 	

@@ -14,6 +14,10 @@ config/name="Lava Runner"
 run/main_scene="res://scenes/Game.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+SceneChanger="*res://scripts/SceneChanger.gd"
+
 [display]
 
 window/stretch/mode="2d"
